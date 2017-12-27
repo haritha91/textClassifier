@@ -11,8 +11,6 @@ from bs4 import BeautifulSoup
 import sys
 import os
 
-os.environ['KERAS_BACKEND']='theano'
-
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils.np_utils import to_categorical
@@ -45,7 +43,7 @@ labels = []
 
 for idx in range(data_train.review.shape[0]):
     text = BeautifulSoup(data_train.review[idx])
-    texts.append(clean_str(text.get_text().encode('ascii','ignore')))
+    texts.append(clean_str(text.get_text()))
     labels.append(data_train.sentiment[idx])
     
 
